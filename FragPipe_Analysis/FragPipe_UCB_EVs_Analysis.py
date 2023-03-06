@@ -11,8 +11,8 @@ import statsmodels,statistics
 
 
 
-protein=pd.read_csv('combined_protein.tsv',sep='\t')
-peptide=pd.read_csv('combined_peptide.tsv',sep='\t')
+protein=pd.read_csv('FragPipeAnalysis/combined_protein.tsv',sep='\t')
+peptide=pd.read_csv('FragPipeAnalyses/combined_peptide.tsv',sep='\t')
 ion=pd.read_csv('combined_ion.tsv',sep='\t')
 
 #collect sample names--> list of sample names
@@ -85,21 +85,24 @@ pg_T.rename(
     inplace=True,
 )
 
-sns.boxplot(data=pro_gcount_df)
+# sns.boxplot(data=pro_gcount_df)
 
-
+print(pro_frac)
 #Checjedf
 
-# samp1="C"
-# samp2="Raw"
-# a=set(pro_frac[samp1])
-# b=set(pro_frac[samp2])
-# a_lean=len(a.difference(b))
-# b_lean=len(b.difference(a))
-# mid=len(a.intersection(b))
+samp1="C"
+samp2="Raw"
+a=set(pro_frac[samp1])
+b=set(pro_frac[samp2])
+a_lean=len(a.difference(b))
+b_lean=len(b.difference(a))
+mid=len(a.intersection(b))
 
 
 
 # venn2(subsets = (a_lean,b_lean,mid), set_labels = (samp1, samp2))
 
+v100=pd.read_excel('Vesicle_100.xlsx')
+vpedia_100=set(v100["Vesicle_100"])
+vp_overlap=a.intersection(vpedia_100)
 # %%
